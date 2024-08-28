@@ -7,28 +7,35 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
-    <script src='js/validator.js'></script>
-    <script src='js/encoder.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src='js/encoding.js'></script>
+    <script src='js/validation.js'></script>
 </head>
 
 <body class="frame">
     <div id="left-section">
         <div id="title" class="unselectable">
-            <img src="img/home-icon.svg" class="not-clickable" alt="home-icon">
-            <span>NOIR ENCODER<span>
+            <img src="img/home-icon.svg" class="not-clickable" alt="home-icon"> NOIR ENCODER
         </div>
         <div id="input-section">
             <textarea id="input-field" type="text" class="font scrollable"
                 placeholder="Type the message you want to encode. Don't worry, we will do the rest."></textarea>
             <div id="buttons">
-                <button id="encode-button" type="button" onclick="encode()">Encode</button>
+                <button id="encode-button" class="solid-button" alt="Encode button" title="Encode" type="button" onclick="encode()">
+                    <i class="fa-solid fa-lock"></i> Encode
+                </button>
 
-                <button id="decode-button" type="button" onclick="decode()">Decode</button>
+                <button id="decode-button" class="transparent-button-1" alt="Decode button" title="Decode" type="button" onclick="decode()">
+                    <i class="fa-solid fa-unlock"></i> Decode
+                </button>
             </div>
         </div>
     </div>
     <div id="output-section" class="frame">
-        <div id="no-output-image" class="hidden-error-image">
+        <button id="copy-button" class="transparent-button-2" alt="Copy button" title="Copy" type="button">
+            <i class="fa-solid fa-copy"></i>
+        </button>
+        <div id="no-output-image">
             <div id="no-output-message" class="text-centered">
                 <h2>We have not found any text here (!)</h2>
                 <p>We will take a break while you write your message for encoding.</p>
@@ -36,6 +43,12 @@
         </div>
         <div id="output-field" class="font scrollable"></div>
     </div>
+    <!--div id="footer">
+        <div id="author-info">
+            <p><i class="fa-brands fa-square-facebook"></i> LinkedIn | <i class="fa-brands fa-linkedin"></i> GitHub</p>
+            <div>Andrea Arias</div>
+            <div>2024</div>
+        </div>
+    </div-->
 </body>
-
 </html>
