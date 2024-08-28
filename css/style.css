@@ -8,10 +8,11 @@
     --font-color-dark: #336174;
     --accent-color: #336174;
     --error-color: #AC3434;
-    --border-radius-big: 50px;
+    --border-radius-big: 30px;
     --border-radius-lit: 15px;
+    --border-button: 30px;
     --border-lit: 5px;
-    --padding: 40px;
+    --space-between: 4rem;
 }
 
 *,
@@ -21,10 +22,6 @@
     margin: 0;
     border: 0;
     padding: 0;
-    font-family: "Space Grotesk", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
     cursor: url(../img/arrow-pointer-solid.svg), auto;
 }
 
@@ -44,6 +41,13 @@
     scrollbar-color: var(--accent-color);
 }
 
+[class]:not([class^="fa"]) {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     width: 100vw;
     height: 100vh;
@@ -53,9 +57,8 @@ body {
 }
 
 button {
-    border: var(--border-lit) solid var(--section-color);
     border-radius: var(--border-radius-lit);
-    font-size: 1.5em;
+    font-size: 3.5vh;
     cursor: url(../img/hand-pointer-solid.svg), pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -75,15 +78,12 @@ textarea::placeholder {
 #left-section {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 65%;
 }
 
 #title {
     width: auto;
-    font-size: 4vw;
-}
-
-#title>span {
+    font-size: 3.5vw;
     color: var(--font-color-light);
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
@@ -99,20 +99,21 @@ textarea::placeholder {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
-    margin-right: 30px;
+    margin-top: var(--space-between);
+    margin-right: var(--space-between);
 }
 
 #input-field {
     height: auto;
     flex-grow: 1;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-between);
     background-color: var(--background-color);
     font-size: 1.75em;
     overflow-x: auto;
     resize: none;
     caret-color: var(--font-color-light);
     cursor: url(../img/i-cursor-solid.svg) 1 1, text;
+
 }
 
 #input-field:focus {
@@ -127,23 +128,67 @@ textarea::placeholder {
 }
 
 #buttons>button {
-    padding: 30px;
+    padding: var(--border-button);
 }
 
 #encode-button {
-    margin-right: 15px;
+    margin-right: 25px;
+}
+
+#decode-button {
+    margin-left: 25px;
+}
+
+.solid-button {
+    border: 7px solid var(--section-color);
     background-color: var(--section-color);
     color: var(--font-color-light);
 }
 
-#decode-button {
-    margin-left: 15px;;
-    background-color: var(--background-color);
+.solid-button:hover {
+    border: 7px solid var(--accent-color);
+    background-color: var(--accent-color);
+    font-weight: 700;
+    transition: all 0.25s ease-in-out;
+}
+
+.transparent-button-1 {
+    border: 7px solid var(--section-color);
+    padding: 3px;
+    background-color: transparent;
     color: var(--font-color-light);
 }
 
+.transparent-button-1:hover{
+    border: 7px solid var(--accent-color);
+    color: var(--font-color-light);
+    font-weight: 700;
+    transition: all 0.25s ease-in-out;
+}
+
+.transparent-button-2 {
+    border: 3px solid var(--font-color-light);
+    background-color: transparent;
+    color: var(--font-color-light)
+}
+
+.transparent-button-2:hover {
+    border: 3px solid var(--accent-color);
+    background-color: transparent;
+    color: var(--accent-color)
+}
+
+.solid-button:active,
+.transparent-button-1:active {
+    border: 7px solid var(--font-color-light);
+    background-color: var(--font-color-light);
+    color: var(--background-color);
+    font-weight: 100;
+    transition: all 0.01s ease-in-out;
+}
+
 #output-section {
-    width: 40%;
+    width: 35%;
     border-radius: var(--border-radius-big);
     position: relative;
     background-color: var(--section-color);
@@ -155,18 +200,17 @@ textarea::placeholder {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    display: block;
 }
 
 #no-output-image {
     position: absolute;
     left: 0px;
     right: 0px;
-    bottom: 0px;
     top: 0px;
+    bottom: 0px;
     display: flex;
-    justify-content: center;
     align-items: end;
+    justify-content: center;
     overflow: hidden;
     border-radius: var(--border-radius-big);
     background-image: url('../img/detective-smoking.svg');
@@ -174,16 +218,12 @@ textarea::placeholder {
     background-position: right center;
     background-repeat: no-repeat;
     opacity: 0;
-}
-
-.hidden-error-image {
-    opacity: 0;
     pointer-events: all;
 }
 
 .visible-error-image {
     animation-name: shake-opacity;
-    animation-duration: 4s;
+    animation-duration: 5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-direction: alternate-reverse;
@@ -194,44 +234,66 @@ textarea::placeholder {
         opacity: 0;
         pointer-events: none;
     }
-    50% {
+
+    80% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
         pointer-events: all;
     }
 }
 
+#copy-button {
+    padding: 20px;
+    top: var(--space-between);
+    right: var(--space-between);
+    position: absolute;
+    font-size: 1.5em;
+    /*display: none;*/
+}
+
 #no-output-message {
-    padding: var(--padding);
-    gap: 15px;
+    padding: var(--space-between);
     display: flex;
     flex-direction: column;
+    gap: 15px;
     opacity: 1;
 }
 
-#no-output-message > h2, #no-output-message > p {
-    padding-right: var(--padding);
-    padding-left: var(--padding);
+#no-output-message>h2,
+#no-output-message>p {
+    padding-right: var(--space-between);
+    padding-left: var(--space-between);
     color: black;
     mix-blend-mode: difference;
     filter: invert(100);
     word-wrap: break-word;
-    opacity: 1;
 }
 
-#no-output-message > h2 {
+#no-output-message>h2 {
     font-size: 2em;
     font-weight: bold;
 }
 
-#no-output-message > p {
+#no-output-message>p {
     font-size: 1.5em;
 }
 
+#footer {
+    width: 100vw;
+    text-align: center;
+}
+
+#author-info {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
 .frame {
-    padding: var(--padding);;
+    padding: var(--space-between);
 }
 
 .font {
