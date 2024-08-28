@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>NOIR ENCODER</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <script src='js/validator.js'></script>
+    <script src='js/encoder.js'></script>
+</head>
+
+<body class="frame">
+    <div id="left-section">
+        <div id="title" class="unselectable">
+            <img src="img/home-icon.svg" class="not-clickable" alt="home-icon">
+            <span>NOIR ENCODER<span>
+        </div>
+        <div id="input-section">
+            <textarea id="input-field" type="text" class="font scrollable"
+                placeholder="Type the message you want to encode. Don't worry, we will do the rest."></textarea>
+            <div id="buttons">
+                <button id="encode-button" type="button" onclick="encode()">Encode</button>
+
+                <button id="decode-button" type="button" onclick="decode()">Decode</button>
+            </div>
+        </div>
+    </div>
+    <div id="output-section" class="frame">
+        <div id="no-output-image" class="hidden-error-image">
+            <div id="no-output-message" class="text-centered">
+                <h2>We have not found any text here (!)</h2>
+                <p>We will take a break while you write your message for encoding.</p>
+            </div>
+        </div>
+        <div id="output-field" class="font scrollable"></div>
+    </div>
+</body>
+
+</html>
